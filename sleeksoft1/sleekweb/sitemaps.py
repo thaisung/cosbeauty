@@ -21,23 +21,12 @@ class StaticViewSitemap(Sitemap):
 
     def items(self):
         return [
-            'tab_best_sellers_client',
-            'tab_products_client',
-            'tab_regimens_client',
-            'nav_blog_client',
-            'nav_nghien_cuu_lam_san',
-            'nav_products_client',
-            'select_kvmb_client',
-            'select_kvmn_client',
-            'blog_1_client',
-            'blog_2_client',
-            'blog_3_client',
-            'about_ve_chung_toi_client',
-            'about_tin_tuc_giai_thuong_client',
-            'about_tam_nhin_va_su_menh_client',
-            'about_lien_he_client',
-            'link_nghien_cuu_khoa_hoc_client',
-            'link_ket_qua_lam_san_client',
+            'cosbeauty_home',
+            'cosbeauty_contact',
+            'cosbeauty_about_us',
+            'cosbeauty_story',
+            'cosbeauty_see_all',
+            'cosbeauty_trademark',
         ]
 
     def location(self, item):
@@ -50,14 +39,14 @@ class detail_product_Sitemap(Sitemap):
 
     def items(self):
         # Lấy tất cả các Category_product từ cơ sở dữ liệu
-        return Product.objects.all()
+        return BlogPost.objects.all()
 
     def lastmod(self, obj):
         return obj.Update_time
 
     def location(self, item):
         # Dùng slug của mỗi category_product để tạo đường dẫn
-        return reverse('detail_product_client', kwargs={'pk': item.id})
+        return reverse('cosbeauty_story_detail', kwargs={'slug': item.Slug})
 
 # class detail_sound_Sitemap(Sitemap):
 #     changefreq = "weekly"
