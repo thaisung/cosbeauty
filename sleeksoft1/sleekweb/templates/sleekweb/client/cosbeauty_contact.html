@@ -1,0 +1,138 @@
+{% extends './cosbeauty_base.html' %}
+{% block title %}COSBEAUTY{% endblock %}
+{% block seo_tag %}
+    <meta name="description" content="COSBEAUTY">
+    <meta name="keywords" content="COSBEAUTY" />
+    <link rel="canonical" href="{% url 'cosbeauty_home' %}" />
+{% endblock %}
+{% block meta_tag %}
+    <meta property="og:title" content="COSBEAUTY">
+    <meta property="og:description" content="COSBEAUTY">
+    <meta property="og:image" content="/upload/LGOO.png">
+    <meta property="og:image:secure_url" content="/upload/LGOO.png">
+    <meta property="og:url" content="{% url 'cosbeauty_home' %}">
+{% endblock %}
+{% block content %}
+<main class=" flex flex-col items-center w-full lg:mt-[203px]">
+    <div class="w-full flex flex-col items-center justify-center pt-[0px] lg:pt-[50px] px-[50px]">
+        <h1 class="font-medium text-[18px] lg:text-[30px] text-[#252E68] text-center">
+            {% if lg == 'VI' %}
+                ĐỊA CHỈ VĂN PHÒNG
+            {% else %}
+                OFFICE ADDRESS
+            {% endif %}
+        </h1>
+        <div class="flex gap-5 items-center text-[#252E68] text-[12px] lg:text-[20px] font-light mt-[20px] lg:mt-[30px]">
+            <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M46.5 30C47.5608 30 48.5779 30.4218 49.3281 31.1719C50.0782 31.922 50.5 32.9392 50.5 34C50.5 35.0609 50.0782 36.078 49.3281 36.8282C48.5779 37.5783 47.5608 38 46.5 38C45.6259 38 44.7816 37.7137 44.0918 37.1934L37.9502 40.878C37.9816 41.0774 37.9982 41.28 37.999 41.4844L43.6152 43.7305C43.634 43.7109 43.6526 43.6911 43.6718 43.6719C44.422 42.9218 45.4391 42.5 46.5 42.5C47.5608 42.5 48.5779 42.9218 49.3281 43.6719C50.0782 44.422 50.5 45.4392 50.5 46.5C50.5 47.5609 50.0782 48.578 49.3281 49.3282C48.5779 50.0783 47.5608 50.5 46.5 50.5C45.4391 50.5 44.422 50.0783 43.6718 49.3282C42.9251 48.5815 42.5038 47.5702 42.5 46.5147L36.8837 44.2686C36.8649 44.2882 36.8473 44.3089 36.8281 44.3282C36.0779 45.0783 35.0608 45.5 34 45.5C32.9391 45.5 31.922 45.0783 31.1718 44.3282C30.4217 43.578 30 42.5609 30 41.5C30 40.4392 30.4217 39.422 31.1718 38.6719C31.922 37.9218 32.9391 37.5 34 37.5C34.8735 37.5 35.7176 37.7858 36.4072 38.3057L42.5488 34.6211C42.5167 34.4169 42.5 34.2094 42.5 34C42.5 32.9392 42.9217 31.922 43.6718 31.1719C44.422 30.4218 45.4391 30 46.5 30Z" fill="#252E68"/>
+            <path d="M23.0537 0.335964C23.6428 -0.144144 24.5115 -0.109541 25.0605 0.43948L45.2734 20.6514L45.3759 20.7657C45.8566 21.3548 45.8226 22.2243 45.2734 22.7735C44.7242 23.3227 43.8547 23.3566 43.2656 22.876L43.1513 22.7735L23.999 3.62112L5.12105 22.5H6.49996C7.32837 22.5 7.99996 23.1716 7.99996 24V41.5C7.99997 42.4283 8.36898 43.3183 9.02535 43.9746C9.68172 44.631 10.5717 45 11.5 45H15V31.5C15 29.7761 15.6843 28.1223 16.9033 26.9033C18.1223 25.6844 19.7761 25 21.5 25H26.5L26.7304 25.0039C27.8801 25.0448 29 25.3904 29.9746 26.0069C30.9492 26.6234 31.741 27.4874 32.2705 28.5088L32.373 28.7149L32.4316 28.8565C32.6864 29.5728 32.3619 30.3801 31.6601 30.7129C30.9116 31.0678 30.017 30.7485 29.6621 30C29.3783 29.4017 28.9306 28.896 28.3711 28.542C27.8811 28.2321 27.3227 28.0496 26.747 28.0088L26.5 28H21.5C20.5717 28 19.6817 28.369 19.0253 29.0254C18.369 29.6818 18 30.5718 18 31.5V45H22.75C23.5784 45 24.25 45.6716 24.25 46.5C24.2499 47.3284 23.5784 48 22.75 48H11.5C9.77607 48 8.12226 47.3157 6.90328 46.0967C5.6843 44.8777 4.99997 43.2239 4.99996 41.5V25.5H1.49996C0.893348 25.5 0.346442 25.1346 0.114215 24.5742C-0.117956 24.0137 0.0104136 23.3685 0.439411 22.9395L22.9394 0.43948L23.0537 0.335964Z" fill="#252E68"/>
+            </svg>
+
+            <div class="flex flex-col">
+                {% if lg == 'VI' %}
+                    <span><span class="font-normal">Địa Chỉ: </span>{{obj1.Address}}</span>
+                    <span><span class="font-normal">Tex: </span>{{obj.Phone_number}}</span>
+                {% else %}
+                    <span><span class="font-normal">Address: </span>{{obj1.Address}}</span>
+                    <span><span class="font-normal">Tex: </span>{{obj.Phone_number}}</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="w-full px-[0px] lg:px-[100px] py-[20px]  lg:py-[50px]">
+        <div class="w-full flex flex-col justify-center items-center gap-[30px] text-[#252E68]">
+            <h2 class="uppercase font-normal lg:font-medium text-[18px] lg:text-[25px] lg:mb-3">
+                {% if lg == 'VI' %}
+                    Tiêu điểm
+                {% else %}
+                    FOCUS
+                {% endif %}
+            </h2>
+            <div class="hidden lg:flex w-full relative px-[100px]">
+                <div class="swiper mySwiper w-full">
+                    <div class="swiper-wrapper uppercase font-medium text-[20px]">
+                        {% for i in list_BlogPost %}
+                        <a href="{% url 'cosbeauty_story_detail' slug=i.Slug %}" class="swiper-slide flex flex-col items-center justify-between">
+                            {% if i.Avatar %}
+                            <img alt="img" class="h-auto  w-full" alt="banner" src="{{ i.Avatar.url }}" />
+                            {% else %}
+                            <img alt="img" class="h-auto  w-full" alt="banner" src="/upload/Rectangle-72.png" />
+                            {% endif %}
+                            <p class=" w-full text-center mt-[10px]">
+                                {% if lg == 'VI' %}
+                                    {{i.Title}}
+                                {% else %}
+                                    {{i.Title_EN}}
+                                {% endif %}
+                            </p>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="swiper-button-prev absolute top-1/2 -translate-y-1/2 -left-10 z-10 min-w-[77px]">
+                    <svg width="77" height="77" viewBox="0 0 77 77" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M35.6562 26.125L23.2812 38.5M23.2812 38.5L35.6562 50.875M23.2812 38.5H54.2188M75.875 38.5C75.875 43.3753 74.9147 48.2029 73.049 52.7071C71.1833 57.2113 68.4487 61.304 65.0013 64.7513C61.554 68.1987 57.4613 70.9333 52.9571 72.799C48.4529 74.6647 43.6253 75.625 38.75 75.625C33.8747 75.625 29.0471 74.6647 24.5429 72.799C20.0387 70.9333 15.946 68.1987 12.4987 64.7513C9.05128 61.304 6.31668 57.2113 4.45097 52.7071C2.58527 48.2029 1.625 43.3753 1.625 38.5C1.625 28.6538 5.53637 19.2109 12.4987 12.2487C19.4609 5.28637 28.9038 1.375 38.75 1.375C48.5962 1.375 58.039 5.28637 65.0013 12.2487C71.9636 19.2109 75.875 28.6538 75.875 38.5Z" stroke="#252E68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="swiper-button-next absolute top-1/2 -translate-y-1/2 -right-10 z-10 min-w-[77px]">
+                    <svg width="77" height="77" viewBox="0 0 76 77" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M41.0625 50.9582L53.3125 38.623M53.3125 38.623L41.0625 26.2878M53.3125 38.623H22.6875M74.75 38.623C74.75 43.4827 73.7994 48.2947 71.9526 52.7845C70.1057 57.2742 67.3987 61.3537 63.9862 64.79C60.5736 68.2263 56.5223 70.9521 52.0636 72.8118C47.6049 74.6715 42.8261 75.6287 38 75.6287C33.1739 75.6287 28.3951 74.6715 23.9364 72.8118C19.4777 70.9521 15.4264 68.2263 12.0138 64.79C8.60127 61.3537 5.89429 57.2742 4.04743 52.7845C2.20057 48.2947 1.25 43.4827 1.25 38.623C1.25 28.8085 5.12186 19.3959 12.0138 12.456C18.9058 5.51611 28.2533 1.61731 38 1.61731C47.7467 1.61731 57.0942 5.51611 63.9862 12.456C70.8781 19.3959 74.75 28.8085 74.75 38.623Z" stroke="#252E68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <script>
+                    const swiper = new Swiper(".mySwiper", {
+                        slidesPerView: 1,
+                        spaceBetween: 16,
+                        navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                        },
+                        breakpoints: {
+                        1024: {
+                            slidesPerView: 4,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        },
+                    });
+                </script>
+                <style>
+                    /* Tắt icon mặc định của Swiper */
+                    .swiper-button-next::after,
+                    .swiper-button-prev::after {
+                    display: none;
+                    }
+                </style>
+            </div>
+            <div class="grid lg:hidden grid-cols-2 px-[80px] gap-[30px] font-medium text-[10px] lg:text-[20px]">
+                {% for i  in list_BlogPost|slice:":4" %}
+                <a href="{% url 'cosbeauty_story_detail' slug=i.Slug %}" class="swiper-slide flex flex-col items-center justify-between">
+                    {% if i.Avatar %}
+                    <img alt="img" class="h-auto  w-full" alt="banner" src="{{ i.Avatar.url }}" />
+                    {% else %}
+                    <img alt="img" class="h-auto  w-full" alt="banner" src="/upload/Rectangle-72.png" />
+                    {% endif %}
+                    <p class=" w-full text-center mt-[10px]">
+                        {% if lg == 'VI' %}
+                            {{i.Title}}
+                        {% else %}
+                            {{i.Title_EN}}
+                        {% endif %}
+                    </p>
+                </a>
+                {% endfor %}
+            </div>
+            <div class="flex lg:hidden items-center justify-center w-full text-[14px]">
+                <a href="{% url 'cosbeauty_see_all' %}" class="px-2 py-1 bg-[#252E68] text-white uppercase rounded">
+                    {% if lg == 'VI' %}
+                        Xem tất cả
+                    {% else %}
+                        See all
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

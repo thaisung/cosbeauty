@@ -1,0 +1,146 @@
+{% extends './base.html' %}
+{% block title %}Trang thay đổi thông tin Về chúng tôi{% endblock %}
+{% block content %}
+<div class="w-full flex-col ">
+    <div class="flex items-center justify-between border-b-[1px] border-[#0e203c] max-h-[50px] px-3 py-2 font-bold">
+        <span class="uppercase w-full flex justify-center lg:justify-start">
+            Trang thay đổi thông tin Về trang Câu chuyện
+        </span>
+        <style>
+            input:focus {
+                outline: none !important;
+            }
+        </style>
+
+    </div>
+    <div class="flex flex-col gap-3 p-3">
+        <div class="flex flex-col gap-1">
+            <span class="font-semibold text-[18px] hover:underline">
+                1.Banner
+            </span>
+            <form method="post" action="{% url 'cosbeauty_change_story' %}" enctype="multipart/form-data" class="flex flex-col gap-2 lg:w-[50%] w-full">
+                {% csrf_token %}
+                <div class="flex flex-col lg:flex-row gap-5">
+                    <div class="flex flex-col gap-2 w-full">
+                        <!-- <span class="font-semibold">- Hình ảnh 1</span> -->
+                        <div class="flex flex-col gap-1 w-full">
+                            {% if obj.Media %}
+                                {% if ".mp4" in obj.Media.url|lower %}
+                                    <video controls autoplay muted loop playsinline class="w-full h-auto">
+                                        <source src="{{ obj.Media.url }}" type="video/mp4">
+                                        Trình duyệt không hỗ trợ video.
+                                    </video>
+                                {% else %}
+                                    <img alt="Media" src="{{ obj.Media.url }}" class="w-full h-auto" />
+                                {% endif %}
+                            {% endif %}
+                            <input type="file" class="rounded-md w-full" accept="image/*,video/*" name="Media" />
+                        </div>
+                        <!-- <textarea name="Content3" class="autoresize rounded-md" placeholder="Nội dung 3">{{obj_Count_1.Content3|default:''}}</textarea> -->
+                    </div>
+                </div>
+                <button type="submit" class=" flex justify-center items-center w-full p-2 rounded-md bg-green-500 font-semibold text-md hover:cursor-pointer">
+                    Cập nhật
+                </button>
+            </form>
+        </div>
+        <div class="flex flex-col gap-1">
+            <span class="font-semibold text-[18px] hover:underline">
+                2.Nội dung
+            </span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-[15px] w-full">
+                <form method="post" action="{% url 'cosbeauty_change_story' %}" enctype="multipart/form-data" class="flex flex-col gap-2  w-full">
+                    {% csrf_token %}
+                    <div class="flex flex-col lg:flex-row gap-5">
+                        <textarea name="Content" class="autoresize rounded-md w-full" placeholder="Nội dung 1 VI">{{obj.Content|default:''}}</textarea>
+                        <textarea name="Content_EN" class="autoresize rounded-md w-full" placeholder="Nội dung 1 EN">{{obj.Content_EN|default:''}}</textarea>
+                    </div>
+                    <button type="submit" class=" flex justify-center items-center w-full  p-2 rounded-md bg-green-500 font-semibold text-md hover:cursor-pointer">
+                        Cập nhật Nội dung
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="flex flex-col gap-1">
+            <span class="font-semibold text-[18px] hover:underline">
+                3.Ảnh 
+            </span>
+            <form method="post" action="{% url 'cosbeauty_change_story' %}" enctype="multipart/form-data" class="flex flex-col gap-2 lg:w-[50%] w-full">
+                {% csrf_token %}
+                <div class="flex flex-col lg:flex-row gap-5">
+                    <div class="flex flex-col gap-2 w-full">
+                        <!-- <span class="font-semibold">- Hình ảnh 1</span> -->
+                        <div class="flex flex-col gap-1 w-full">
+                            {% if obj.Media2 %}
+                                {% if ".mp4" in obj.Media2.url|lower %}
+                                    <video controls autoplay muted loop playsinline class="w-full h-auto">
+                                        <source src="{{ obj.Media2.url }}" type="video/mp4">
+                                        Trình duyệt không hỗ trợ video.
+                                    </video>
+                                {% else %}
+                                    <img alt="Media" src="{{ obj.Media2.url }}" class="w-full h-auto" />
+                                {% endif %}
+                            {% endif %}
+                            <input type="file" class="rounded-md w-full" accept="image/*,video/*" name="Media2" />
+                        </div>
+                        <!-- <textarea name="Content3" class="autoresize rounded-md" placeholder="Nội dung 3">{{obj_Count_1.Content3|default:''}}</textarea> -->
+                    </div>
+                </div>
+                <button type="submit" class=" flex justify-center items-center w-full p-2 rounded-md bg-green-500 font-semibold text-md hover:cursor-pointer">
+                    Cập nhật
+                </button>
+            </form>
+        </div>
+        <div class="flex flex-col gap-1">
+            <span class="font-semibold text-[18px] hover:underline">
+                4.Banner (Trang xem tất cả)
+            </span>
+            <form method="post" action="{% url 'cosbeauty_change_story' %}" enctype="multipart/form-data" class="flex flex-col gap-2 lg:w-[50%] w-full">
+                {% csrf_token %}
+                <div class="flex flex-col lg:flex-row gap-5">
+                    <div class="flex flex-col gap-2 w-full">
+                        <!-- <span class="font-semibold">- Hình ảnh 1</span> -->
+                        <div class="flex flex-col gap-1 w-full">
+                            {% if obj.Media3 %}
+                                {% if ".mp4" in obj.Media3.url|lower %}
+                                    <video controls autoplay muted loop playsinline class="w-full h-auto">
+                                        <source src="{{ obj.Media3.url }}" type="video/mp4">
+                                        Trình duyệt không hỗ trợ video.
+                                    </video>
+                                {% else %}
+                                    <img alt="Media" src="{{ obj.Media3.url }}" class="w-full h-auto" />
+                                {% endif %}
+                            {% endif %}
+                            <input type="file" class="rounded-md w-full" accept="image/*,video/*" name="Media3" />
+                        </div>
+                        <!-- <textarea name="Content3" class="autoresize rounded-md" placeholder="Nội dung 3">{{obj_Count_1.Content3|default:''}}</textarea> -->
+                    </div>
+                </div>
+                <button type="submit" class=" flex justify-center items-center w-full p-2 rounded-md bg-green-500 font-semibold text-md hover:cursor-pointer">
+                    Cập nhật
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('.open_input_Size').on('click', function() {
+            $('.input_Size').toggle(); // Bật nếu ẩn, ẩn nếu bật
+        });
+    });
+</script>
+<script>
+    function autoResize(el) {
+        el.style.height = 'auto';
+        el.style.height = el.scrollHeight + 'px';
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('textarea.autoresize').forEach(function (el) {
+            autoResize(el);
+            el.addEventListener('input', () => autoResize(el));
+        });
+    });
+</script>
+{% endblock %}

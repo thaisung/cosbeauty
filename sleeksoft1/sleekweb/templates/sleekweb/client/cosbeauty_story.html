@@ -1,0 +1,133 @@
+{% extends './cosbeauty_base.html' %}
+{% block title %}COSBEAUTY{% endblock %}
+{% block seo_tag %}
+    <meta name="description" content="COSBEAUTY">
+    <meta name="keywords" content="COSBEAUTY" />
+    <link rel="canonical" href="{% url 'cosbeauty_home' %}" />
+{% endblock %}
+{% block meta_tag %}
+    <meta property="og:title" content="COSBEAUTY">
+    <meta property="og:description" content="COSBEAUTY">
+    <meta property="og:image" content="/upload/LGOO.png">
+    <meta property="og:image:secure_url" content="/upload/LGOO.png">
+    <meta property="og:url" content="{% url 'cosbeauty_home' %}">
+{% endblock %}
+{% block content %}
+<main class=" flex flex-col items-center w-full lg:mt-[203px]">
+    <div class=" w-full lg:w-[1246px]">
+        {% if obj1.Media %}
+            {% if ".mp4" in obj1.Media.url|lower %}
+                <video controls autoplay muted loop playsinline class="w-full h-auto">
+                    <source src="{{ obj1.Media.url }}" type="video/mp4">
+                    Trình duyệt không hỗ trợ video.
+                </video>
+            {% else %}
+                <img alt="Media" src="{{ obj1.Media.url }}" class="w-full h-auto" />
+            {% endif %}
+        {% else %}
+            <a class="w-full">
+                <img src="/upload/Rectangle-71.png" class="w-full" />
+            </a>
+        {% endif %}
+        <!-- <a class="w-full">
+            <video class="w-full" autoplay muted loop playsinline>
+                <source src="/upload/2849-163375551_large.mp4" type="video/mp4" />
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
+        </a> -->
+    </div>
+    <div class="w-full px-[50px] lg:px-[100px] lg:py-[50px]">
+        <div class="w-full flex flex-col justify-center items-center gap-[30px] text-[#252E68]">
+            <div class="flex flex-col justify-center items-center py-[20px] lg:py-[50px]">
+                <h2 class="uppercase font-medium text-[18px] lg:text-[30px] my-3">
+                    {% if lg == 'VI' %}
+                        Xu hướng
+                    {% else %}
+                        Trend
+                    {% endif %}
+                </h2>
+                <span class="font-normal italic text-[15px] lg:text-[20px] w-full lg:w-[930px] text-center border-[1px]  border-[#252E68] p-5">
+                    {% if lg == 'VI' %}
+                        {{obj1.Content}}
+                    {% else %}
+                        {{obj1.Content_EN}}
+                    {% endif %}
+                </span>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-[20px] lg:gap-[80px] w-full lg:w-[1300px] h-auto lg:h-[800px]">
+                <div class=" w-full lg:w-[50%] h-full">
+                    {% if obj1.Media2 %}
+                        {% if ".mp4" in obj1.Media2.url|lower %}
+                            <video controls autoplay muted loop playsinline class="w-full h-auto">
+                                <source src="{{ obj1.Media2.url }}" type="video/mp4">
+                                Trình duyệt không hỗ trợ video.
+                            </video>
+                        {% else %}
+                            <img alt="Media" src="{{ obj1.Media2.url }}" class="w-full h-full object-cover" />
+                        {% endif %}
+                    {% else %}
+                        <a class="w-full">
+                            <img src="/upload/Rectangle-71.png" class="w-full h-full object-cover" />
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="grid grid-cols-2  gap-[20px] font-medium text-[10px] lg:text-[20px] w-full lg:w-[50%]">
+                    {% for i  in list_BlogPost|slice:":4" %}
+                    <a href="{% url 'cosbeauty_story_detail' slug=i.Slug %}" class="swiper-slide flex flex-col items-center justify-between">
+                        {% if i.Avatar %}
+                        <img alt="img" class="h-auto  w-full" alt="Avatar" src="{{ i.Avatar.url }}" />
+                        {% else %}
+                        <img alt="img" class="h-auto  w-full" alt="Avatar" src="/upload/Rectangle-72.png" />
+                        {% endif %}
+                        <p class=" w-full text-center mt-[10px]">
+                            {% if lg == 'VI' %}
+                                {{i.Title}}
+                            {% else %}
+                                {{i.Title_EN}}
+                            {% endif %}
+                        </p>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <a href="{% url 'cosbeauty_see_all' %}" class=" hidden lg:flex font-medium text-[20px] underline underline-offset-4 mt-[100px]">
+                {% if lg == 'VI' %}
+                    Xem tất cả
+                {% else %}
+                    See all
+                {% endif %}
+            </a>
+            <div class="flex lg:hidden items-center justify-center w-full text-[14px]">
+                <a href="{% url 'cosbeauty_see_all' %}" class="px-2 py-1 bg-[#252E68] text-white uppercase rounded">
+                    {% if lg == 'VI' %}
+                        Xem tất cả
+                    {% else %}
+                        See all
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col text-[#252E68] gap-[20px] py-[20px] lg:py-[0px] lg:mb-[50px]">
+        <div class="flex flex-col justify-center items-center">
+            <h2 class="uppercase font-medium text-[18px] lg:text-[30px] my-3 text-center">
+                {% if lg == 'VI' %}
+                    Các thương hiệu đối tác
+                {% else %}
+                    PARTNER BRANDS
+                {% endif %}
+            </h2>
+            <span class="font-light italic text-[14px] lg:text-[20px] text-center px-[50px]">
+                Text Font ROBOTO Light italic Kích thước 20pt - Căn giữa
+            </span>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-5 w-full lg:w-[800px] gap-[20px] px-[80px]">
+            {% for i in list_Edit_dsdt_mb %}
+            <a class=" flex justify-center items-center w-full">
+                <img class="w-full" alt="Trademark" src="{% if i.Photo %}{{ i.Photo.url }}{% endif %}">
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

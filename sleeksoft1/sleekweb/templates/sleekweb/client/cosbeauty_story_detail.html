@@ -1,0 +1,74 @@
+{% extends './cosbeauty_base.html' %}
+{% block title %}COSBEAUTY{% endblock %}
+{% block seo_tag %}
+    <meta name="description" content="COSBEAUTY">
+    <meta name="keywords" content="COSBEAUTY" />
+    <link rel="canonical" href="{% url 'cosbeauty_home' %}" />
+{% endblock %}
+{% block meta_tag %}
+    <meta property="og:title" content="COSBEAUTY">
+    <meta property="og:description" content="COSBEAUTY">
+    <meta property="og:image" content="/upload/LGOO.png">
+    <meta property="og:image:secure_url" content="/upload/LGOO.png">
+    <meta property="og:url" content="{% url 'cosbeauty_home' %}">
+{% endblock %}
+{% block content %}
+<main class=" flex flex-col lg:flex-row justify-center gap-[0px] lg:gap-[100px]  w-full lg:mt-[203px] lg:py-[100px] px-[50px] lg:px-[0px]">
+    <div class="w-full lg:w-[771px] h-[1500px] border-[1px]  border-[#252E68] p-[30px]">
+        {% if lg == 'VI' %}
+            {{ obj1.Content|safe }}
+        {% else %}
+            {{ obj1.Content_EN|safe }}
+        {% endif %}
+    </div>
+    <div class="hidden lg:flex lg:border-l-[1px]  border-[#252E68]">
+        <div class="grid grid-cols-1 w-full lg:w-[320px] gap-[50px] lg:pl-[20px]">
+            {% for i  in list_BlogPost %}
+            <a href="{% url 'cosbeauty_story_detail' slug=i.Slug %}" class="flex flex-col justify-center items-center w-full h-[350px] gap-3">
+                {% if i.Avatar %}
+                <img src="{{ i.Avatar.url }}" alt="Avatar" class="w-full h-full object-cover" />
+                {% else %}
+                <img src="/upload/Rectangle-71.png" alt="Avatar" class="w-full h-full object-cover" />
+                {% endif %}
+                <p class=" w-full  font-medium italic text-[20px] uppercase text-center">
+                    {% if lg == 'VI' %}
+                        {{i.Title}}
+                    {% else %}
+                        {{i.Title_EN}}
+                    {% endif %}
+                </p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class=" flex lg:hidden flex-col justify-center items-center w-full py-[30px] gap-[20px]">
+        <div class="grid grid-cols-2  gap-[20px] font-medium text-[10px] lg:text-[20px]">
+            {% for i  in list_BlogPost %}
+            <a href="{% url 'cosbeauty_story_detail' slug=i.Slug %}" class="swiper-slide flex flex-col items-center justify-between">
+                {% if i.Avatar %}
+                <img alt="img" class="h-auto  w-full" alt="Avatar" src="{{ i.Avatar.url }}" />
+                {% else %}
+                <img alt="img" class="h-auto  w-full" alt="Avatar" src="/upload/Rectangle-72.png" />
+                {% endif %}
+                <p class=" w-full text-center mt-[10px]">
+                    {% if lg == 'VI' %}
+                        {{i.Title}}
+                    {% else %}
+                        {{i.Title_EN}}
+                    {% endif %}
+                </p>
+            </a>
+            {% endfor %}
+        </div>
+        <div class="flex lg:hidden items-center justify-center w-full text-[14px]">
+            <a href="{% url 'cosbeauty_see_all' %}" class="px-2 py-1 bg-[#252E68] text-white uppercase rounded">
+                {% if lg == 'VI' %}
+                    Xem tất cả
+                {% else %}
+                    See all
+                {% endif %}
+            </a>
+        </div>
+    </div>
+</main>
+{% endblock %}

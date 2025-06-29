@@ -1,0 +1,107 @@
+{% extends './cosbeauty_base.html' %}
+{% block title %}COSBEAUTY{% endblock %}
+{% block seo_tag %}
+    <meta name="description" content="COSBEAUTY">
+    <meta name="keywords" content="COSBEAUTY" />
+    <link rel="canonical" href="{% url 'cosbeauty_home' %}" />
+{% endblock %}
+{% block meta_tag %}
+    <meta property="og:title" content="COSBEAUTY">
+    <meta property="og:description" content="COSBEAUTY">
+    <meta property="og:image" content="/upload/LGOO.png">
+    <meta property="og:image:secure_url" content="/upload/LGOO.png">
+    <meta property="og:url" content="{% url 'cosbeauty_home' %}">
+{% endblock %}
+{% block content %}
+<main class=" flex flex-col items-center w-full ">
+    <div class="w-full">
+        {% if obj1.Media3 %}
+            {% if ".mp4" in obj1.Media3.url|lower %}
+                <video controls autoplay muted loop playsinline class="w-full h-auto">
+                    <source src="{{ obj1.Media3.url }}" type="video/mp4">
+                    Trình duyệt không hỗ trợ video.
+                </video>
+            {% else %}
+                <img alt="Media" src="{{ obj1.Media3.url }}" class="w-full h-auto" />
+            {% endif %}
+        {% else %}
+            <a class="w-full">
+                <img src="/upload/Rectangle-71.png" class="w-full" />
+            </a>
+        {% endif %}
+        <!-- <a class="w-full">
+            <video class="w-full" autoplay muted loop playsinline>
+                <source src="/upload/2849-163375551_large.mp4" type="video/mp4" />
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
+        </a> -->
+    </div>
+    <div class="w-full px-[50px] lg:px-[100px] py-[20px] lg:py-[50px]">
+        <div class="w-full flex flex-col justify-center items-center gap-[15px] lg:gap-[30px] text-[#252E68]">
+            <div class="flex flex-col justify-center items-center py-[0px] lg:py-[50px]">
+                <h2 class="uppercase font-medium text-[18px] lg:text-[30px] my-[0px] lg:my-3">
+                    {% if lg == 'VI' %}
+                        Xu hướng
+                    {% else %}
+                        Trend
+                    {% endif %}
+                </h2>
+                <span class="hidden lg:block font-normal italic text-[20px] w-full lg:w-[930px] text-center border-[1px]  border-[#252E68] p-5">
+                    {% if lg == 'VI' %}
+                        {{obj1.Content}}
+                    {% else %}
+                        {{obj1.Content_EN}}
+                    {% endif %}
+                </span>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 w-full lg:w-[1300px] gap-[20px] lg:gap-[50px] text-[10px] lg:text-[20px]">
+                {% for i  in list_BlogPost %}
+                <a href="{% url 'cosbeauty_story_detail' slug=i.Slug %}" class="swiper-slide flex flex-col items-center justify-between">
+                    {% if i.Avatar %}
+                    <img alt="img" class="h-auto  w-full" alt="Avatar" src="{{ i.Avatar.url }}" />
+                    {% else %}
+                    <img alt="img" class="h-auto  w-full" alt="Avatar" src="/upload/Rectangle-72.png" />
+                    {% endif %}
+                    <p class=" w-full text-center mt-[10px]">
+                        {% if lg == 'VI' %}
+                            {{i.Title}}
+                        {% else %}
+                            {{i.Title_EN}}
+                        {% endif %}
+                    </p>
+                </a>
+                {% endfor %}
+            </div>
+            <div class="flex items-center justify-center w-full font-light text-[20px]  gap-5">
+                <a class="flex gap-2 items-center">
+                    <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.7276 1.54517L5.56643 6.70633L10.7276 11.8675M6.59866 1.54517L1.4375 6.70633L6.59866 11.8675" stroke="#252E68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    {% if lg == 'VI' %}
+                        Trước
+                    {% else %}
+                        Before
+                    {% endif %}
+                </a>
+                <div class="flex gap-2">
+                    <a>1</a>
+                    <a>2</a>
+                    <a>3</a>
+                    <a>...</a>
+                    <a>5</a>
+                </div>
+                <a class="flex gap-2 items-center">
+                    {% if lg == 'VI' %}
+                        Tiếp
+                    {% else %}
+                        Next
+                    {% endif %}
+                    <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.70996 1.54517L6.87112 6.70633L1.70996 11.8675M5.83889 1.54517L11 6.70633L5.83889 11.8675" stroke="#252E68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
