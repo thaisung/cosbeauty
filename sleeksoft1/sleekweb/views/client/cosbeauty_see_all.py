@@ -65,6 +65,8 @@ from django.core.mail import send_mail
 from django.forms.models import model_to_dict
 from django.core.mail import send_mail,EmailMessage
 
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+
 
 
     
@@ -83,8 +85,27 @@ def cosbeauty_see_all(request):
         except:
             context['obj1'] = {}
 
-        context['list_BlogPost'] =BlogPost.objects.all().order_by('-id')
         context['list_Edit_dsdt_mb'] = Edit_dsdt.objects.all().order_by('Order')
+
+        list_BlogPost =BlogPost.objects.all().order_by('-id')
+        s = request.GET.get('s')
+        if s:
+            list_BlogPost = list_BlogPost.filter(Q(Title__icontains=s)).order_by('-id')
+            context['s'] = s
+        p = request.GET.get('p','1')
+        context['p'] = p
+        # Sử dụng Paginator để chia nhỏ danh sách (10 là số lượng mục trên mỗi trang)
+        paginator = Paginator(list_BlogPost, settings.PAGE)
+        # Lấy số trang hiện tại từ URL, nếu không mặc định là trang 1
+        try:
+            page_obj = paginator.get_page(p)  # tự xử lý PageNotAnInteger, EmptyPage
+        except PageNotAnInteger:
+            page_obj = paginator.page(1)
+        except EmptyPage:
+            page_obj = paginator.page(paginator.num_pages)
+        context['list_BlogPost'] = page_obj
+        context['page_obj'] = page_obj
+        context['p'] = page_obj.number
         
         return render(request, 'sleekweb/client/cosbeauty_see_all.html', context, status=200)
     

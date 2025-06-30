@@ -13,6 +13,21 @@
     <meta property="og:url" content="{% url 'cosbeauty_home' %}">
 {% endblock %}
 {% block content %}
+<script>
+    // Trước khi unload, lưu vị trí scroll
+    window.addEventListener('beforeunload', function () {
+        localStorage.setItem('scrollPos', window.scrollY);
+    });
+
+    // Khi load lại, cuộn đến vị trí cũ
+    window.addEventListener('DOMContentLoaded', function () {
+        const scrollPos = localStorage.getItem('scrollPos');
+        if (scrollPos) {
+            window.scrollTo(0, parseInt(scrollPos));
+            localStorage.removeItem('scrollPos');  // chỉ giữ cho 1 lần load lại
+        }
+    });
+</script>
 <main class=" flex flex-col items-center w-full ">
     <div class="w-full">
         {% if obj1.Media3 %}
@@ -72,8 +87,12 @@
                 </a>
                 {% endfor %}
             </div>
-            <div class="flex items-center justify-center w-full font-light text-[20px]  gap-5">
-                <a class="flex gap-2 items-center">
+            {% with total=page_obj.paginator.num_pages current=page_obj.number %}
+            <div class="flex gap-4 items-center justify-center text-[20px] font-light">
+                
+                {# Trước #}
+                {% if page_obj.has_previous %}
+                <a href="?p={{ page_obj.previous_page_number }}" class="flex gap-2 items-center hover:underline cursor-pointer">
                     <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.7276 1.54517L5.56643 6.70633L10.7276 11.8675M6.59866 1.54517L1.4375 6.70633L6.59866 11.8675" stroke="#252E68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -83,14 +102,36 @@
                         Before
                     {% endif %}
                 </a>
-                <div class="flex gap-2">
-                    <a>1</a>
-                    <a>2</a>
-                    <a>3</a>
-                    <a>...</a>
-                    <a>5</a>
-                </div>
-                <a class="flex gap-2 items-center">
+                {% endif %}
+
+                {# Trang 1 #}
+                <a href="?p=1" class="{% if current == 1 %}font-bold {% endif %}">1</a>
+
+                {# Dấu ... nếu cách xa đầu #}
+                {% if current > 4 %}
+                <span>...</span>
+                {% endif %}
+
+                {# Trang trước, hiện tại, sau #}
+                {% for i in page_obj.paginator.page_range %}
+                {% if i >= current|add:"-2" and i <= current|add:"2" and i != 1 and i != total %}
+                    <a href="?p={{ i }}" class="{% if i == current %}font-bold {% endif %}">{{ i }}</a>
+                {% endif %}
+                {% endfor %}
+
+                {# Dấu ... nếu cách xa cuối #}
+                {% if current < total|add:"-3" %}
+                <span>...</span>
+                {% endif %}
+
+                {# Trang cuối #}
+                {% if total > 1 %}
+                <a href="?p={{ total }}" class="{% if current == total %}font-bold {% endif %}">{{ total }}</a>
+                {% endif %}
+
+                {# Tiếp #}
+                {% if page_obj.has_next %}
+                <a href="?p={{ page_obj.next_page_number }}" class="flex gap-2 items-center hover:underline cursor-pointer">
                     {% if lg == 'VI' %}
                         Tiếp
                     {% else %}
@@ -100,7 +141,9 @@
                     <path d="M1.70996 1.54517L6.87112 6.70633L1.70996 11.8675M5.83889 1.54517L11 6.70633L5.83889 11.8675" stroke="#252E68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </a>
+                {% endif %}
             </div>
+            {% endwith %}
         </div>
     </div>
 </main>

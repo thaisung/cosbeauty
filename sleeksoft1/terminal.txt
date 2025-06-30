@@ -205,6 +205,7 @@ mkdir sleekproject|||
 Điều hướng đến thư mục/thư mục dự án.
 
 cd sleekproject/|||
+cd sleekproject1/
 
 Tạo môi trường ảo bên trong thư mục dự án. Tôi đặt tên môi trường virut là 'sleekenv' .
 
@@ -254,6 +255,8 @@ STATIC_ROOT = BASE_DIR / 'static'
 Hãy thực hiện quá trình di chuyển ban đầu, thao tác này sẽ thiết lập các bảng cơ sở dữ liệu, v.v.. Bạn cần phải ở trong dự án Django mà chúng tôi đã tạo để chạy các lệnh sau /home/sleekproject/sleeksoft.
 
 cd sleeksoft/|||
+cd sleeksoft1/
+
 python3 manage.py makemigrations|||
 python3 manage.py migrate|||
 Bây giờ, hãy tạo một siêu người dùng cho trang web của chúng tôi.
@@ -280,6 +283,7 @@ Liên kết Gunicorn với dự án của chúng tôi
 Chạy lệnh sau để liên kết Gunicorn với dự án của chúng tôi.
 
 gunicorn --bind 0.0.0.0:8000 sleeksoft.wsgi|||
+gunicorn --bind 0.0.0.0:8001 sleeksoft1.wsgi
 Điều này sẽ khởi động Gunicorn trên cùng giao diện mà máy chủ phát triển Django đang chạy. Chúng ta có thể quay lại và kiểm tra lại trang web. Sự khác biệt duy nhất là chúng tôi không thực hiện lệnh startserver từ Django, thay vào đó Gunicorn sẽ đảm nhiệm việc đó.
 
 Lưu ý:  Trong một số trường hợp, giao diện quản trị sẽ không được áp dụng bất kỳ kiểu dáng nào vì Gunicorn không biết cách tìm nội dung CSS tĩnh chịu trách nhiệm cho việc này. Chúng tôi sẽ cấu hình nó trong Nginx.
@@ -295,6 +299,7 @@ Chúng tôi đã kiểm tra rằng Gunicorn có thể tương tác với ứng d
 Tạo và mở tệp socket systemd cho Gunicorn theo đường dẫn sau.
 
 sudo touch /etc/systemd/system/gunicorn.socket||
+sudo touch /etc/systemd/system/gunicorn1.socket||
 Tệp gunicorn.socket sẽ được tạo theo đường dẫn trên, tải xuống qua FTP và bắt đầu thêm đoạn mã sau vào nó.
 
 [Unit]
@@ -314,8 +319,9 @@ WantedBy=sockets.target
 Lưu, đóng và tải tệp lên qua FTP khi bạn hoàn tất.
 
 Tiếp theo, tạo và mở tệp dịch vụ systemd cho Gunicorn với đặc quyền sudo. Tên tệp dịch vụ phải khớp với tên tệp ổ cắm ngoại trừ phần mở rộng:
-
 sudo touch /etc/systemd/system/gunicorn.service|||
+sudo touch /etc/systemd/system/gunicorn1.service
+
 Tệp gunicorn.service sẽ được tạo theo đường dẫn trên, tải xuống qua FTP và bắt đầu thêm đoạn mã sau vào nó.
 
 [Unit]
@@ -347,9 +353,12 @@ Bây giờ, tệp dịch vụ systemd của chúng tôi đã hoàn tất. Bây g
 
 sudo systemctl start gunicorn.socket|||
 sudo systemctl enable gunicorn.socket|||
+sudo systemctl start gunicorn1.socket
+sudo systemctl enable gunicorn1.socket
 Chúng tôi có thể xác nhận rằng thao tác đã thành công bằng cách kiểm tra tệp ổ cắm. Kiểm tra trạng thái của quá trình để tìm hiểu xem nó có thể bắt đầu hay không:
 
 sudo systemctl status gunicorn.socket|||
+sudo systemctl status gunicorn1.socket
 Tiếp theo, kiểm tra sự tồn tại của file gunicorn.sock trong thư mục /run
 
 file /run/gunicorn.sock
@@ -400,10 +409,13 @@ Kiểm tra tệp /etc/systemd/system/gunicorn.service xem có vấn đề gì kh
 
 sudo systemctl daemon-reload|||
 sudo systemctl restart gunicorn|||
+sudo systemctl restart gunicorn1
+
 Phần 6: Cấu hình máy chủ web Nginx
 Chúng ta cần định cấu hình Nginx để chuyển lưu lượng truy cập đến quy trình Gunicorn. Chúng ta cần tạo và mở một khối máy chủ mới trong thư mục có sẵn trên các trang của Nginx bằng lệnh sau.
 
 sudo touch /etc/nginx/sites-available/sleeksoft|||
+sudo touch /etc/nginx/sites-available/sleeksoft1
 Tải tập tin này qua FTP và bắt đầu chỉnh sửa. Chúng tôi sẽ thêm phần sau vào khối máy chủ này.
 
 Chỉ định rằng khối này sẽ lắng nghe trên cổng 80 bình thường và nó sẽ phản hồi với tên miền hoặc địa chỉ IP của máy chủ của chúng tôi.
@@ -425,6 +437,7 @@ server {
 Lưu, đóng và tải tệp lên qua FTP khi bạn hoàn tất. Bây giờ, chúng ta có thể kích hoạt tệp bằng cách liên kết nó với thư mục hỗ trợ trang web
 
 sudo ln -s /etc/nginx/sites-available/sleeksoft /etc/nginx/sites-enabled|||
+sudo ln -s /etc/nginx/sites-available/sleeksoft1 /etc/nginx/sites-enabled
 Kiểm tra cấu hình Nginx để tìm lỗi cú pháp bằng cách sử dụng lệnh sau
 
 sudo nginx -t|||
@@ -439,20 +452,20 @@ Bây giờ chúng ta có thể truy cập miền hoặc địa chỉ IP của m�
 
 Phần 7: Cài đặt Certbot để kích hoạt SSL
 cài đặt snapd
-
 sudo apt install snapd|||
+
 Thực hiện các hướng dẫn sau trên dòng lệnh trên máy để đảm bảo rằng bạn có phiên bản snapd mới nhất
-
 sudo snap install core; sudo snap refresh core|||
+
 Chạy lệnh này trên dòng lệnh trên máy để cài đặt Certbot.
-
 sudo snap install --classic certbot|||
+
 Thực hiện hướng dẫn sau trên dòng lệnh trên máy để đảm bảo rằng lệnh certbot có thể chạy được.
-
 sudo ln -s /snap/bin/certbot /usr/bin/certbot|||
-Chạy lệnh này để nhận chứng chỉ và để Certbot tự động chỉnh sửa cấu hình Nginx của bạn để phục vụ nó, bật quyền truy cập HTTPS chỉ trong một bước.
 
+Chạy lệnh này để nhận chứng chỉ và để Certbot tự động chỉnh sửa cấu hình Nginx của bạn để phục vụ nó, bật quyền truy cập HTTPS chỉ trong một bước.
 sudo certbot --nginx|||
+
 Khi được nhắc, hãy nhập giá trị mong muốn. Điều này sẽ tự động tạo chứng chỉ SSL cho tên miền trỏ.
 
 Bây giờ khởi động lại máy chủ.
