@@ -58,6 +58,7 @@ class Edit_lh(models.Model):
         verbose_name_plural = "Thông tin map"
     
     Address = models.CharField('Địa chỉ liên hệ', max_length=200,blank=True, null=True)
+    Address_EN = models.CharField('Địa chỉ liên hệ EN', max_length=200,blank=True, null=True)
     Link_map = models.CharField('Link map', max_length=1000,blank=True, null=True)
     Count = models.IntegerField('Số bản ghi',blank=True, null=True)
     Creation_time = models.DateTimeField('Thời gian tạo',auto_now_add=True)

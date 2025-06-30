@@ -19,6 +19,7 @@
                 <form method="post" action="{% url 'change_lh_admin' %}" enctype="multipart/form-data" class="flex flex-col gap-[5px] lg:gap-[10px] lg:mt-3">
                     {% csrf_token %}
                     <input type="text" value="{{obj.Address}}" placeholder="Đại chỉ" class="rounded-md w-full" name="Address" />
+                    <input type="text" value="{{obj.Address_EN}}" placeholder="Đại chỉ EN" class="rounded-md w-full" name="Address_EN" />
                     <input type="text" value="{{obj.Link_map}}" placeholder="Link Google map" class="rounded-md w-full" name="Link_map" />
                     <button type="submit" class=" flex justify-center items-center w-full p-2 rounded-md bg-green-500 font-semibold text-md hover:cursor-pointer">
                         Cập nhật

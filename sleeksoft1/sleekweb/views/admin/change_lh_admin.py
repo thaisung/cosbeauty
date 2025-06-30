@@ -79,6 +79,7 @@ def change_lh_admin(request):
         if request.user.is_authenticated and request.user.is_superuser:
             fields = {}
             fields['Address'] = request.POST.get('Address')
+            fields['Address_EN'] = request.POST.get('Address_EN')
             fields['Link_map'] = request.POST.get('Link_map')
             try:
                 obj = Edit_lh.objects.get(Count=1)
