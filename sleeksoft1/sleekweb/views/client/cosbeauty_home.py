@@ -64,6 +64,7 @@ import base64
 from django.core.mail import send_mail
 from django.forms.models import model_to_dict
 from django.core.mail import send_mail,EmailMessage
+from django.http import HttpResponseNotAllowed
 
 def set_language(request, lang_code):
     response = redirect(request.META.get('HTTP_REFERER', '/'))  # quay lại trang vừa bấm
@@ -92,4 +93,5 @@ def cosbeauty_home(request):
 
         
         return render(request, 'sleekweb/client/cosbeauty_home.html', context, status=200)
+    return HttpResponseNotAllowed(['GET'])
     
