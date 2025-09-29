@@ -46,14 +46,14 @@
                         About us
                     {% endif %}
                 </h2>
-                <span class="font-normal italic text-[15px] lg:text-[20px] w-full lg:w-[614px] text-center border-[1px]  border-[#252E68] p-5">
+                <span class="font-normal italic text-[15px] lg:text-[20px] w-full lg:w-[614px] text-center ">
                     {% if lg == 'VI' %}
                         {{obj1.Content1}}
                     {% else %}
                         {{obj1.Content1_EN}}
                     {% endif %}
                 </span>
-                <span class="font-normal italic text-[15px] lg:text-[20px] w-full lg:w-[930px] text-center mt-[30px] border-[1px]  border-[#252E68] p-5">
+                <span class="font-normal italic text-[15px] lg:text-[20px] w-full lg:w-[930px] text-center mt-[30px] ">
                     {% if lg == 'VI' %}
                         {{obj1.Content2}}
                     {% else %}
@@ -96,14 +96,14 @@
                     {% else %}
                         <img src="/upload/Rectangle-71.png" class="w-full h-full object-cover max-h-[350px]" />
                     {% endif %}
-                    <p class="hidden lg:block w-full h-auto lg:h-[200px] font-medium text-[15px] lg:text-[20px] border-[1px]  border-[#252E68] p-5 overflow-auto">
+                    <p class="hidden lg:block w-full h-auto lg:h-[200px] font-medium text-[15px] lg:text-[20px]  overflow-auto">
                         {% if lg == 'VI' %}
                             {{obj1.Content3}}
                         {% else %}
                             {{obj1.Content3_EN}}
                         {% endif %}
                     </p>
-                    <p class="w-full h-auto lg:h-[292px] font-normal text-[15px] lg:text-[20px] border-[1px]  border-[#252E68] p-5 overflow-auto">
+                    <p class="w-full h-auto lg:h-[292px] font-normal text-[15px] lg:text-[20px]  overflow-auto">
                         {% if lg == 'VI' %}
                             {{obj1.Content4}}
                         {% else %}
@@ -117,14 +117,14 @@
                 <div class="relative flex justify-center w-full h-[500px]">
                     <img src="{% if i.Media %}{{i.Media.url}}{% endif %}" class="w-full h-full object-cover" />
                     <div class="absolute inset-0 flex flex-col gap-1 w-full  h-full p-[20px] lg:p-[50px] justify-end">
-                        <h3 class="font-medium text-[14px] lg:text-[24px] text-[#252E68] uppercase ">
+                        <h3 class="font-medium text-[14px] lg:text-[24px] text-stone-50 uppercase ">
                             {% if lg == 'VI' %}
                                 {{i.Title}}
                             {% else %}
                                 {{i.Title_EN}}
                             {% endif %}
                         </h3>
-                        <p class=" w-full h-auto  font-normal italic  text-[10px] lg:text-[15px] border-[1px]  border-[#252E68] p-5 overflow-y-auto">
+                        <p class=" w-full h-auto  font-normal italic  text-[10px] lg:text-[15px] text-stone-50 border-[1px]  border-stone-50 p-5 overflow-y-auto">
                             {% if lg == 'VI' %}
                                 {{i.Content}}
                             {% else %}
