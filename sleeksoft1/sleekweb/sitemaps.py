@@ -16,8 +16,8 @@ from .views.client.select_kvmn_client import *
 protocol = 'https'
 
 class StaticViewSitemap(Sitemap):
-    priority = 0.5
-    changefreq = 'weekly'
+    priority = 1.0
+    changefreq = 'daily'
 
     def items(self):
         return [
