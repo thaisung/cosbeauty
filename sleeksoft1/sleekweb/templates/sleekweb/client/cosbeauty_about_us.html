@@ -115,7 +115,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 w-full lg:w-[1100px] gap-[50px] lg:gap-[100px] py-[20px] lg:py-[50px]">
                 {% for i in list_commit %}
                 <div class="relative flex justify-center w-full h-[500px]">
-                    <img src="{{i.Media.url}}" class="w-full h-full object-cover" />
+                    <img src="{% if i.Media %}{{i.Media.url}}{% endif %}" class="w-full h-full object-cover" />
                     <div class="absolute inset-0 flex flex-col gap-1 w-full  h-full p-[20px] lg:p-[50px] justify-end">
                         <h3 class="font-medium text-[14px] lg:text-[24px] text-[#252E68] uppercase ">
                             {% if lg == 'VI' %}
