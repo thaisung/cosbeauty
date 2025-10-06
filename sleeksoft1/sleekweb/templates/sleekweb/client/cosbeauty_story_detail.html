@@ -22,7 +22,7 @@
         {% endif %}
     </div>
     <div class="hidden lg:flex lg:border-l-[1px]  border-[#252E68]">
-        <div class="grid grid-cols-1 w-full lg:w-[320px] gap-[50px] lg:pl-[20px]">
+        <div class="flex flex-col w-full lg:w-[320px] gap-[50px] lg:pl-[20px]">
             {% for i  in list_BlogPost %}
             <a href="{% url 'cosbeauty_story_detail' slug=i.Slug %}" class="flex flex-col justify-center items-center w-full  gap-3">
                 {% if i.Avatar %}
