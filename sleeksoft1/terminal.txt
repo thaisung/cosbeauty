@@ -1,3 +1,6 @@
+45.251.115.154
+3z8f2cTEUuA9
+
 pip install django-environ
 pip install django-tailwind
 pip install django-browser-reload
