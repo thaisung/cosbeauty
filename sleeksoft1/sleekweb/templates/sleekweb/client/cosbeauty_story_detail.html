@@ -14,7 +14,7 @@
 {% endblock %}
 {% block content %}
 <main class=" flex flex-col lg:flex-row justify-center gap-[0px] lg:gap-[100px]  w-full lg:mt-[203px] lg:py-[100px] px-[50px] lg:px-[0px]">
-    <div class="w-full lg:w-[771px] h-[1500px] border-[1px]  border-[#252E68] p-[30px]">
+    <div class="w-full lg:w-[771px] h-auto border-[1px]  border-[#252E68] p-[30px]">
         {% if lg == 'VI' %}
             {{ obj1.Content|safe }}
         {% else %}
@@ -24,7 +24,7 @@
     <div class="hidden lg:flex lg:border-l-[1px]  border-[#252E68]">
         <div class="grid grid-cols-1 w-full lg:w-[320px] gap-[50px] lg:pl-[20px]">
             {% for i  in list_BlogPost %}
-            <a href="{% url 'cosbeauty_story_detail' slug=i.Slug %}" class="flex flex-col justify-center items-center w-full h-[350px] gap-3">
+            <a href="{% url 'cosbeauty_story_detail' slug=i.Slug %}" class="flex flex-col justify-center items-center w-full  gap-3">
                 {% if i.Avatar %}
                 <img src="{{ i.Avatar.url }}" alt="Avatar" class="w-full h-full object-cover" />
                 {% else %}
