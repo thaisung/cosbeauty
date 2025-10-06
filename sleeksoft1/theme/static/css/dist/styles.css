@@ -1984,6 +1984,10 @@ select {
     gap: 80px;
   }
 
+  .lg\:gap-\[40px\] {
+    gap: 40px;
+  }
+
   .lg\:border-x-\[1px\] {
     border-left-width: 1px;
     border-right-width: 1px;
