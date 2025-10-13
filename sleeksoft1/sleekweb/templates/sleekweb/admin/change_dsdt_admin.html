@@ -26,8 +26,8 @@
                 <form method="post" action="{% url 'change_dsdt_admin' %}" enctype="multipart/form-data" class="flex flex-col gap-[5px] lg:gap-[10px] lg:mt-3">
                     {% csrf_token %}
                     <!-- <input type="text" value="" placeholder="Tên" class="rounded-md w-full" name="Name" />
-                    <input type="text" value="" placeholder="Địa chỉ" class="rounded-md w-full" name="Address" />
-                    <input type="text" value="" placeholder="Link" class="rounded-md w-full" name="Link" /> -->
+                    <input type="text" value="" placeholder="Địa chỉ" class="rounded-md w-full" name="Address" /> -->
+                    <input type="text" value="" placeholder="Link" class="rounded-md w-full" name="Link" />
                     {% if Category == '0' %}
                     <input type="hidden" value="0" placeholder="Danh mục" class="rounded-md w-full" name="Category" />
                     {% endif %}
@@ -51,8 +51,8 @@
                     <form method="post" action="{% url 'change_dsdt_admin' %}" enctype="multipart/form-data" class="flex flex-col gap-[5px] lg:gap-[10px]">
                         {% csrf_token %}
                         <!-- <input type="text" value="{{i.Name}}" placeholder="Tên" class="rounded-md w-full" name="Name" />
-                        <input type="text" value="{{i.Address}}" placeholder="Địa chỉ" class="rounded-md w-full" name="Address" />
-                        <input type="text" value="{{i.Link}}" placeholder="Link" class="rounded-md w-full" name="Link" /> -->
+                        <input type="text" value="{{i.Address}}" placeholder="Địa chỉ" class="rounded-md w-full" name="Address" /> -->
+                        <input type="text" value="{{i.Link}}" placeholder="Link" class="rounded-md w-full" name="Link" />
                         <input type="hidden" value="0" placeholder="Danh mục" class="rounded-md w-full" name="Category" />
                         <input type="hidden" value="{{i.id}}" placeholder="Danh mục" class="rounded-md w-full" name="id" />
                         <input type="file" class="rounded-md w-full"  accept="image/*" name="Photo"  />    
@@ -92,8 +92,8 @@
                     <form method="post" action="{% url 'change_dsdt_admin' %}" enctype="multipart/form-data" class="flex flex-col gap-[5px] lg:gap-[10px]">
                         {% csrf_token %}
                         <!-- <input type="text" value="{{i.Name}}" placeholder="Tên" class="rounded-md w-full" name="Name" />
-                        <input type="text" value="{{i.Address}}" placeholder="Địa chỉ" class="rounded-md w-full" name="Address" />
-                        <input type="text" value="{{i.Link}}" placeholder="Link" class="rounded-md w-full" name="Link" /> -->
+                        <input type="text" value="{{i.Address}}" placeholder="Địa chỉ" class="rounded-md w-full" name="Address" /> -->
+                        <input type="text" value="{{i.Link}}" placeholder="Link" class="rounded-md w-full" name="Link" />
                         <input type="hidden" value="1" placeholder="Danh mục" class="rounded-md w-full" name="Category" />
                         <input type="hidden" value="{{i.id}}" placeholder="Danh mục" class="rounded-md w-full" name="id" />
                         <input type="file" class="rounded-md w-full"  accept="image/*" name="Photo"  />    

@@ -950,10 +950,6 @@ select {
   height: 149px;
 }
 
-.h-\[1500px\] {
-  height: 1500px;
-}
-
 .h-\[226px\] {
   height: 226px;
 }
@@ -964,10 +960,6 @@ select {
 
 .h-\[30px\] {
   height: 30px;
-}
-
-.h-\[350px\] {
-  height: 350px;
 }
 
 .h-\[36px\] {
@@ -1968,10 +1960,6 @@ select {
     gap: 130px;
   }
 
-  .lg\:gap-\[20px\] {
-    gap: 20px;
-  }
-
   .lg\:gap-\[30px\] {
     gap: 30px;
   }
@@ -1982,10 +1970,6 @@ select {
 
   .lg\:gap-\[80px\] {
     gap: 80px;
-  }
-
-  .lg\:gap-\[40px\] {
-    gap: 40px;
   }
 
   .lg\:border-x-\[1px\] {

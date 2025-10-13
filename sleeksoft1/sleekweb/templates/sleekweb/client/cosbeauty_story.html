@@ -123,7 +123,7 @@
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-5 w-full lg:w-[800px] gap-[30px] lg:gap-[50px] px-[80px]">
             {% for i in list_Edit_dsdt_mb %}
-            <a class=" flex justify-center items-center w-full">
+            <a href="{{i.Link}}" target="_blank" class=" flex justify-center items-center w-full">
                 <img class="w-full" alt="Trademark" src="{% if i.Photo %}{{ i.Photo.url }}{% endif %}">
             </a>
             {% endfor %}
