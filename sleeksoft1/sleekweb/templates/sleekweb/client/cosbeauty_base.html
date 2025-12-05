@@ -232,22 +232,22 @@
                     </span>
                 </div>
             </div>
-            <div class="flex flex-col lg:flex-row items-center justify-between text-center w-full h-auto lg:h-[438px] p-[50px] lg:p-[150px] bg-white text-[#252E68]">
-                <div class="flex h-full flex-col justify-center items-center gap-3">
+            <div class="grid grid-cols-3  text-center w-full h-auto  p-[50px] lg:p-[150px] bg-white text-[#252E68]">
+                <div class="flex h-full flex-col  items-center gap-3">
                     <img src="{{obj.Logo.url}}" class="w-[170px]" />
                     <span class="uppercase font-medium text-[25px]">
                         CÔNG TY TNHH COSBEAUTY
                     </span>
                 </div>
-                <div class="flex h-full flex-col items-start gap-3">
-                    <span class="uppercase font-medium text-[25px]">
+                <div class="flex h-full flex-col items-center gap-3 pl-[80px]">
+                    <span class="uppercase font-medium text-[25px] w-full text-left">
                         {% if lg == 'VI' %}
                             Tìm hiểu thêm
                         {% else %}
                             Learn more
                         {% endif %}
                     </span>
-                    <div class="flex flex-col font-light text-[20px] text-left">
+                    <div class="flex flex-col font-light text-[20px] text-left w-full">
                         <a class="">
                             {% if lg == 'VI' %}
                                 Follow trên mạng xã hội
@@ -292,8 +292,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="flex flex-col items-start h-full gap-3">
-                    <span class="uppercase font-medium text-[25px]">
+                <div class="flex flex-col items-center h-full gap-3">
+                    <span class="uppercase font-medium text-[25px] w-full text-left">
                         {% if lg == 'VI' %}
                             Liên hệ
                         {% else %}
@@ -302,11 +302,33 @@
                     </span>
                     <div class="flex flex-col font-light text-[20px] text-left">
                         {% if lg == 'VI' %}
-                            <span class=""><span class="font-medium">Địa chỉ :</span> 04 Senic Valley 2, MD4-4, Quận 7,Hồ Chí Minh, Việt Nam.</span>
-                            <span class=""><span class="font-medium">Tex :</span> {{obj.Phone_number}}</span>
+                            <span class="font-medium">CÔNG TY TNHH COSBEAUTY</span>
+                            <span class=""><span class="font-medium">Địa chỉ :</span> Số 9 đường Nội khu Mỹ Phước, Phường Tân Hưng, Thành phố Hồ Chí Minh, Việt Nam.</span>
+                            <span class=""><span class="font-medium">Đại diện pháp luật:</span> Trần Văn Quyền</span>
+                            <span class=""><span class="font-medium">Điện thoại:</span> 0982762783</span>
+                            <span class=""><span class="font-medium">Email:</span> cosbeautyvietnam@gmail.com</span>
+                            <span class=""><span class="font-medium">MST:</span> 0317577011</span>
+                            <!-- <span class=""><span class="font-medium">Địa chỉ :</span> 04 Senic Valley 2, MD4-4, Quận 7,Hồ Chí Minh, Việt Nam.</span>
+                            <span class=""><span class="font-medium">Tex :</span> {{obj.Phone_number}}</span> -->
                         {% else %}
-                            <span class=""><span class="font-medium">Address :</span> 04 Senic Valley 2, MD4-4, District 7,Ho Chi Minh City, Vietnam.</span>
-                            <span class=""><span class="font-medium">Phone :</span> {{obj.Phone_number}}</span>
+                            <span class="font-medium">COSBEAUTY COMPANY LIMITED</span>
+                            <span class="">
+                                <span class="font-medium">Address:</span> No. 9 Noi Khu My Phuoc Street, Tan Hung Ward, Ho Chi Minh City, Vietnam.
+                            </span>
+                            <span class="">
+                                <span class="font-medium">Legal Representative:</span> Tran Van Quyen
+                            </span>
+                            <span class="">
+                                <span class="font-medium">Phone:</span> 0982762783
+                            </span>
+                            <span class="">
+                                <span class="font-medium">Email:</span> cosbeautyvietnam@gmail.com
+                            </span>
+                            <span class="">
+                                <span class="font-medium">Tax Code:</span> 0317577011
+                            </span>
+                            <!-- <span class=""><span class="font-medium">Address :</span> 04 Senic Valley 2, MD4-4, District 7,Ho Chi Minh City, Vietnam.</span>
+                            <span class=""><span class="font-medium">Phone :</span> {{obj.Phone_number}}</span> -->
                         {% endif %}
                     </div>
                 </div>
@@ -422,11 +444,33 @@
                     </span>
                     <div class="flex flex-col font-light text-[13px] lg:text-[20px]">
                         {% if lg == 'VI' %}
-                            <span class=""><span class="font-medium">Địa chỉ :</span> 04 Senic Valley 2, MD4-4, Quận 7,Hồ Chí Minh, Việt Nam.</span>
-                            <span class=""><span class="font-medium">Tex :</span> {{obj.Phone_number}}</span>
+                            <span class="font-medium">CÔNG TY TNHH COSBEAUTY</span>
+                            <span class=""><span class="font-medium">Địa chỉ :</span> Số 9 đường Nội khu Mỹ Phước, Phường Tân Hưng, Thành phố Hồ Chí Minh, Việt Nam.</span>
+                            <span class=""><span class="font-medium">Đại diện pháp luật:</span> Trần Văn Quyền</span>
+                            <span class=""><span class="font-medium">Điện thoại:</span> 0982762783</span>
+                            <span class=""><span class="font-medium">Email:</span> cosbeautyvietnam@gmail.com</span>
+                            <span class=""><span class="font-medium">MST:</span> 0317577011</span>
+                            <!-- <span class=""><span class="font-medium">Địa chỉ :</span> 04 Senic Valley 2, MD4-4, Quận 7,Hồ Chí Minh, Việt Nam.</span>
+                            <span class=""><span class="font-medium">Tex :</span> {{obj.Phone_number}}</span> -->
                         {% else %}
-                            <span class=""><span class="font-medium">Address :</span> 04 Senic Valley 2, MD4-4, District 7,Ho Chi Minh City, Vietnam.</span>
-                            <span class=""><span class="font-medium">Phone :</span> {{obj.Phone_number}}</span>
+                            <span class="font-medium">COSBEAUTY COMPANY LIMITED</span>
+                            <span class="">
+                                <span class="font-medium">Address:</span> No. 9 Noi Khu My Phuoc Street, Tan Hung Ward, Ho Chi Minh City, Vietnam.
+                            </span>
+                            <span class="">
+                                <span class="font-medium">Legal Representative:</span> Tran Van Quyen
+                            </span>
+                            <span class="">
+                                <span class="font-medium">Phone:</span> 0982762783
+                            </span>
+                            <span class="">
+                                <span class="font-medium">Email:</span> cosbeautyvietnam@gmail.com
+                            </span>
+                            <span class="">
+                                <span class="font-medium">Tax Code:</span> 0317577011
+                            </span>
+                            <!-- <span class=""><span class="font-medium">Address :</span> 04 Senic Valley 2, MD4-4, District 7,Ho Chi Minh City, Vietnam.</span>
+                            <span class=""><span class="font-medium">Phone :</span> {{obj.Phone_number}}</span> -->
                         {% endif %}
                     </div>
                 </div>
